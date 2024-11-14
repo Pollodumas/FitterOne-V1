@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="CutiFit" class="action-bar">
+        <ActionItem tap="onSaveDay" ios.position="right" android.position="actionBar">
+            <Label text="Save" />
+        </ActionItem>
+    </ActionBar>
+
+    <StackLayout>
+        <ListPicker items="{{ days }}" selectedIndex="{{ selectedDayIndex }}" 
+                   selectedValue="{{ selectedDay }}" class="p-16"/>
+        
+        <ListView items="{{ currentExercises }}" class="list-group">
+            <ListView.itemTemplate>
+                <StackLayout class="list-group-item">
+                    <Label text="{{ name }}" class="h3"/>
+                    <Label text="{{ 'Sets: ' + series + ' | Reps: ' + reps + ' | Rest: ' + pause + 's | Weight: ' + weight + 'kg' }}" 
+                           class="body" textWrap="true"/>
+                    <Button text="Edit" tap="onEditExercise" class="btn btn-primary"/>
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <Button text="Add Exercise" tap="onAddExercise" class="btn btn-primary m-t-20"/>
+    </StackLayout>
+</Page>
